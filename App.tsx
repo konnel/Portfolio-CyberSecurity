@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+// import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'; // Removed
+// import { AnimatePresence } from 'framer-motion'; // Removed as AnimatedRoutes is removed
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from "./src/sections/Home";
@@ -11,30 +11,30 @@ import Blog from './src/sections/Blog';
 import Contact from './src/sections/Contact';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/solid';
 
-const ScrollToTop: React.FC = () => {
-  const { pathname } = useLocation();
+// const ScrollToTop: React.FC = () => { // Removed
+//   const { pathname } = useLocation();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, [pathname]);
 
-  return null;
-};
+//   return null;
+// };
 
-const AnimatedRoutes: React.FC = () => {
-  const location = useLocation();
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.hash || location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/work" element={<Work />} />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
+// const AnimatedRoutes: React.FC = () => { // Removed
+//   const location = useLocation();
+//   return (
+//     <AnimatePresence mode="wait">
+//       <Routes location={location} key={location.hash || location.pathname}>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/about" element={<About />} />
+//         <Route path="/work" element={<Work />} />
+//         <Route path="/blog" element={<Blog />} />
+//         <Route path="/contact" element={<Contact />} />
+//       </Routes>
+//     </AnimatePresence>
+//   );
+// };
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true); // Default to dark mode
@@ -66,16 +66,18 @@ const App: React.FC = () => {
 
 
   return (
-    <HashRouter>
-      <div className="flex flex-col min-h-screen bg-cyber-bg dark:bg-gray-900 text-cyber-text-primary dark:text-gray-100 transition-colors duration-300">
+    <div className="flex flex-col min-h-screen bg-cyber-bg dark:bg-gray-900 text-cyber-text-primary dark:text-gray-100 transition-colors duration-300">
         <div 
           className="fixed top-0 left-0 h-1 bg-cyber-primary z-50 transition-all duration-150" 
           style={{ width: `${scrollProgress}%` }}
         />
         <Navbar />
         <main className="flex-grow pt-20"> {/* Adjust pt if navbar height changes */}
-          <ScrollToTop />
-          <AnimatedRoutes />
+          <Home />
+          <About />
+          <Work />
+          <Blog />
+          <Contact />
         </main>
         <Footer />
         <button
@@ -86,7 +88,6 @@ const App: React.FC = () => {
           {isDarkMode ? <SunIcon className="w-6 h-6" /> : <MoonIcon className="w-6 h-6" />}
         </button>
       </div>
-    </HashRouter>
   );
 };
 

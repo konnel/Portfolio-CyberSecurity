@@ -5,34 +5,35 @@ import { motion } from "framer-motion";
 interface AnimatedShinyTextProps {
   children: ReactNode;
   className?: string;
-  shimmerClassName?: string;
+  shimmerColors?: string[];
+  shimmerSize?: string;
+  borderRadius?: string;
 }
 
 const AnimatedShinyText: React.FC<AnimatedShinyTextProps> = ({
   children,
   className = "",
-  shimmerClassName = "",
+  shimmerColors = ["#ffffff", "#7dd3fc", "#ffffff"],
+  shimmerSize = "100px",
+  borderRadius = "100px",
 }) => {
   return (
-    <span
-      className={`relative inline-flex items-center justify-center overflow-hidden rounded-lg ${className}`}
+    <motion.span
+      className={`relative inline-block bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 bg-clip-text text-transparent ${className}`}
+      style={{
+        backgroundSize: '200% 100%',
+      }}
+      animate={{
+        backgroundPosition: ["200% 0", "-200% 0"],
+      }}
+      transition={{
+        repeat: Infinity,
+        duration: 3,
+        ease: "linear",
+      }}
     >
-      <span className="z-10">{children}</span>
-      <motion.div
-        className={`absolute inset-0 -z-1 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-500 ${shimmerClassName}`}
-        style={{
-            backgroundSize: '200% 100%',
-        }}
-        animate={{
-          backgroundPosition: ["200% 0", "-200% 0"],
-        }}
-        transition={{
-          repeat: Infinity,
-          duration: 3,
-          ease: "linear",
-        }}
-      />
-    </span>
+      {children}
+    </motion.span>
   );
 };
 

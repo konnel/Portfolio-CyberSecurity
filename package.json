@@ -9,19 +9,20 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "react": "^19.1.0",
     "@heroicons/react": "^2.2.0",
+    "@react-three/drei": "^10.2.0",
+    "@react-three/fiber": "^9.1.2",
+    "emailjs-com": "^3.2.0",
+    "framer-motion": "^12.18.1",
+    "maath": "^0.10.8",
+    "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.2",
-    "framer-motion": "^12.18.1",
-    "emailjs-com": "^3.2.0",
-    "@react-three/fiber": "^9.1.2",
-    "@react-three/drei": "^10.2.0",
-    "maath": "^0.10.8",
     "three": "^0.177.0"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "@types/react-dom": "^19.1.6",
     "typescript": "~5.7.2",
     "vite": "^6.2.0"
   }
